@@ -1,13 +1,10 @@
-
 #include <windows.h>
 #include <filter.h>
 
 FILTER_DLL filter_dll = {
     FILTER_FLAG_ALWAYS_ACTIVE | FILTER_FLAG_NO_CONFIG,
-    NULL,NULL,
-    const_cast<char*>("sub_menu_item"),
+    NULL,NULL,const_cast<char*>("sub_menu_item"),
 };
-
 BOOL replace_data(DWORD* address, DWORD data) {
     DWORD oldProtect;
     if (!VirtualProtect(address, 4, PAGE_EXECUTE_READWRITE, &oldProtect)) {
@@ -16,7 +13,6 @@ BOOL replace_data(DWORD* address, DWORD data) {
     *address = data;
     return VirtualProtect(address, 4, oldProtect, &oldProtect);
 }
-
 FILTER* get_thisfp(FILTER* fp) {
     SYS_INFO si;
     fp->exfunc->get_sys_info(NULL, &si);

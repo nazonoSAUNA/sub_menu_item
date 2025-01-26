@@ -52,7 +52,7 @@ EXTERN_C FILTER_DLL __declspec(dllexport)* __stdcall GetFilterTable() {
         (add_menu_item) = (*reinterpret_cast<decltype(add_menu_item)*>(aviutl_hinst + 0x2d126));
         replace_data((DWORD*)(aviutl_hinst + 0x2d126), (DWORD)&add_menu_item_wrap);
     } else {
-        MessageBoxA(NULL, "AviUtl ver1.10�̂ݑΉ��ł�", filter_dll.name, MB_OK);
+        MessageBoxA(NULL, "AviUtl ver1.10のみ対応です", filter_dll.name, MB_OK);
     }
     return &filter_dll;
 }
